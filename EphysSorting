@@ -4,6 +4,9 @@
 Created on Sun Apr  5 22:51:41 2020
 
 @author: deepshika
+-this analyzes excel files created from CNCR-FGA MATLAB scripts. 
+-sorts different codes and creates a group with all the sorted codes and saves as an excel file
+-additionally statistics and graphs can be added to the same code 
 """
 
 
