@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Apr  5 22:51:41 2020
+
+@author: deepshika
+"""
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Apr  5 22:41:52 2020
+
+@author: deepshika
+"""
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Apr  5 11:16:58 2020
+
+@author: deepshika
+"""
+
+import pandas as pd
+import glob
+import os
+from openpyxl.utils.dataframe import dataframe_to_rows 
+from openpyxl import Workbook
+
+
+Parameter = "3AP" 
+SN1 = "Normalized Amplitude"
+SN2 = "Corrected Amplitude (pA)"
+SN3 = "Total Charge (pC)"
+df = pd.DataFrame()
+df_SN1 = pd.DataFrame()
+df_SN2 = pd.DataFrame()
+path= "/Users/deepshika/Documents/Neurasmus-Amsterdam/THESIS /Excel Data/Compilation"
+os.chdir(path)
+retval = os.getcwd()
+print(retval)
+
+for f in glob.glob("*.xlsx"):
+    head, tail = os.path.split(f)
+    filename = tail 
+    print(filename)
+    df1 = pd.read_excel(f, sheet_name= SN2)
+
+    df2=df1.filter(like='kinky')
+    df22=df1.filter(like='Kinky')
+    df3= df1.filter(like='jury')
+    df33 = df1.filter(like='Jury')
+    df4= df1.filter(like='ice')
+    df44 = df1.filter(like='Ice')
+    df5=df1.filter(like='image')
+    df55=df1.filter(like='Image')
+    df6 = df1.filter(like='Jet')
+    df7 = df1.filter(like='King')
+    df8=df1.filter(like='index')
+    df88=df1.filter(like='Index')
+    df9= df1.filter(like='Jasmin')
+    df10= df1.filter(like='ivory')
+    df1010 = df1.filter(like='Ivory')
+    df11=df1.filter(like='Journey')
+    df12=df1.filter(like='idea')
+    df1212= df1.filter(like='Idea')
+    df13 = df1.filter(like='Koala')
+  
+    
+    df = pd.concat([df2, df22, df3, df33, df4, df44], axis=1)
+    two = pd.concat([df5, df55, df6, df7], axis=1)
+    three= pd.concat([df8, df88, df9], axis=1)
+    four = pd.concat([df10, df1010, df11], axis=1)
+    five = pd.concat([df12, df1212, df13], axis=1)
+    print(df)
+
+
+    path2="/Users/deepshika/Documents/Neurasmus-Amsterdam/THESIS /Excel Data/"
+    wb = Workbook()
+    ws = wb.create_sheet(SN2,0)
+
+    for r in dataframe_to_rows(df, index=True, header=True):
+     ws.append(r)
+    for z in dataframe_to_rows(two, index=True, header=True):
+     ws.append(z)
+    for a in dataframe_to_rows(three, index=True, header=True):
+     ws.append(a)
+    for b in dataframe_to_rows(four, index=True, header=True):
+      ws.append(b)
+    for c in dataframe_to_rows(five, index=True, header=True):
+     ws.append(c)
+    wb.save(path2 + "sorted_" + SN2 + filename)
+   
+ 
+    print(df)
+    print(two)
+
+
+
